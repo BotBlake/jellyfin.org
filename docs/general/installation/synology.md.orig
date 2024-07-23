@@ -13,7 +13,7 @@ Many pre-built NAS devices are underpowered. We generally do not recommend runni
 See: [Hardware Selection](/docs/general/administration/hardware-selection) for more information.
 
 :::
-For [Synology](https://www.synology.com/en-us/dsm), Jellyfin is installed using Docker. For this guide, the Synology Container Manager will be used to install Jellyfin.
+For [Synology](https://www.synology.com/en-us/dsm), Jellyfin is installed using Docker. In this guide, the Synology Container Manager will be used to install Jellyfin.
 
 ## Prerequisites
 
@@ -38,7 +38,7 @@ Navigate to the "Registry" tab and search for "Jellyfin". You should see the off
 
 ![Downloading the Image](/images/docs/install-synology-10.png)
 
-A new window will open and a Jellyfin version can be selected for install. The latest version is recommended. Click `Apply` after selection a version.
+A new window will open and a Jellyfin version can be selected for installation. The latest version is recommended. Click `Apply` after selection a version.
 
 ![Downloading the Image](/images/docs/install-synology-11.png)
 
@@ -70,7 +70,7 @@ Your settings should look like this:
 ![Advanced Settings](/images/docs/install-synology-14.png)
 Click `Next` to proceed to the next step.
 
-Settings can be reviewed at this screen. Check the `Run this container after the wizard is finished` checkbox and click `Apply` if everything looks correct. The container should now be shown in the `Container` tab.
+Settings can be reviewed on this screen. Check the `Run this container after the wizard is finished` checkbox and click `Apply` if everything looks correct. The container should now be shown in the `Container` tab.
 
 Browse to `http://SERVER_IP:8096` in a browser on a other device to finish setting up the Jellyfin server.
 If a different port was used, replace `8096` with the port used instead.
