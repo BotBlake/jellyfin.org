@@ -21,46 +21,26 @@ If you created the file with a password, then you will have to enter that value 
 
 If you can access the server locally but not outside of your LAN, then you likely have an issue with the router configuration.
 Check the port forwarding settings on your router to ensure the server is visible from outside your local network.
+You can also enable the "Enable automatic port mapping" option on the **Networking** page of the server settings to have the server attempt to configure port forwarding on the router automatically if your router supports it.
 
 If there are no logs at all relating to web traffic, even over a LAN connection, then the server hasn't been reached at all yet.
 This would indicate either an incorrect address or an issue somewhere else on the network.
 
 ## Debug Logging
 
-Debug logging can be very useful when troubleshooting issues. To enable debug logging, manually editing a configuration file is required as Jellyfin does not control this from the frontend UI.
+To enable much more verbose debug logging, it is currently required to manually edit a configuration file, since Jellyfin does not yet have an option to enable debug functionality within the frontend UI.
 
-Logging options can be configured in the file `logging.json` in the [Jellyfin configuration directory](/docs/general/administration/configuration#configuration-directory). On some platforms, there is also `logging.default.json` which provides default values which can then be overridden by a custom `logging.json`.
-
-:::caution
-
-Enabling debug logging will create a **very** large amount of output; as an example, simply loading the homepage will generate over 4000 lines of logs with the debug configuration below. Leaving debug logging enabled on a productive Jellyfin instance for a long period of time is not recommended, and it should be enabled only during troubleshooting.
-
-:::
-
-:::note
-
-If you are requested to provide extensive debug logs in an issue or during troubleshooting (e.g. more than just a few lines), please compress the resulting log files if possible as they will be very large otherwise.
-
-:::
-
-To enable debug logging, create the `logging.json` file and add the following contents to it:
+To make this change, go to the [Jellyfin configuration directory](/docs/general/administration/configuration#configuration-directory) and find the `logging.json` file if it exists, or create the file if it does not. Debug logging is then enabled by changing the minimum logging level to debug as in the example below. If `logging.json` already exists and contains existing keys, the `"MinimumLevel"` key should be added to the `"Serilog"` object as seen in the example. If `logging.json` does not already exist, or if it is empty, a configuration containing only the following example structure will enable debug logging.
 
 ```json
 {
   "Serilog": {
-    "MinimumLevel": {
-      "Default": "Debug",
-      "Override": {
-        "": "Debug"
-      }
-    }
+    "MinimumLevel": "Debug"
   }
 }
 ```
 
-If a `logging.json` file already exists, edit the `Serilog` `MinimumLevel` section to match the above but do not change any other values in the file.
-
-Debug messages will appear in the log with the `DBG` tag prefixed to each line, though some components will also log additional details at `INF` with this configuration.
+Debug messages appear in the log with the `DBG` tag prefixed to each line.
 
 :::note
 
@@ -68,18 +48,12 @@ If the `logging.json` file existed before the last server start, Jellyfin will a
 
 :::
 
-To restore normal logging, you can remove the override `logging.json` (if you created a new file above) or restore the `logging.json` `Serilog` `MinimumLevel` section to its default values of:
+Once the need for verbose logging has passed, debug logging can be disabled by changing the `"MinimumLevel"` key in `logging.json` to `"Information"`, as in the example below, in order to restore the default logging level. It is not necessary to delete the `logging.json` configuration after debugging is complete.
 
 ```json
 {
   "Serilog": {
-    "MinimumLevel": {
-      "Default": "Information",
-      "Override": {
-        "Microsoft": "Warning",
-        "System": "Warning"
-      }
-    }
+    "MinimumLevel": "Information"
   }
 }
 ```
@@ -110,8 +84,8 @@ If you are running ArchLinux, run the following command instead:
 echo fs.inotify.max_user_watches=524288 | sudo tee /etc/sysctl.d/40-max-user-watches.conf && sudo sysctl --system
 ```
 
-Then paste it in your terminal and press Enter to run it. For Docker, this needs to be done on the host, not the container.  
-See the [Guard Listen README on increasing inotify watchers](https://github.com/guard/listen/blob/master/README.md#increasing-the-amount-of-inotify-watchers) for more information.
+Then paste it in your terminal and press on enter to run it. For Docker, this needs to be done on the host, not the container.
+See [here](https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers) for more information.
 
 ## Uninstalling Jellyfin on MacOS
 
@@ -169,7 +143,7 @@ Manual changes to the database can destroy your instance beyond repair. to preve
 Before continuing, make sure that you have sqlite3 installed.
 When sqlite3 is not installed, you can install it under Debian based systems with `apt install sqlite3`.
 After that do the following commands/SQL query:  
-You can find a list of default paths in the [configuration directory documentation](/docs/general/administration/configuration#configuration-directory).
+*You can find a list of default Paths [here](../configuration#configuration-directory)*
 
 ```bash
 sqlite3 /PATH/TO/JELLYFIN/DB/jellyfin.db
@@ -184,14 +158,14 @@ SELECT Permissions.Value,Permissions.Kind,Users.Username  FROM Permissions INNER
 ```
 
 To just check permissions on your admin account, run the following query:  
-_Please change `AdminUsername` to the username of your admin account_
+*Please change `AdminUsername` to the username of your admin account*
 
 ```sql
 SELECT Value,Kind FROM Permissions WHERE UserId IN (SELECT Id FROM Users WHERE Username = 'AdminUsername');
 ```
 
 <br />
-The first row with an value of 1 or 0 shows if the permission is assigned or not. For a summary of each permission type, see the [PermissionKind enumeration in the Jellyfin source code](https://github.com/jellyfin/jellyfin/blob/master/src/Jellyfin.Database/Jellyfin.Database.Implementations/Enums/PermissionKind.cs)
+The first row with an value of 1 or 0 shows if the permission is assigned or not. The second row displays the kind of permission. To get a summary for every permission you can look [here](https://github.com/jellyfin/jellyfin/blob/master/Jellyfin.Data/Enums/PermissionKind.cs)
 
 ### Repair Permissions
 
@@ -208,11 +182,3 @@ UPDATE Permissions SET Value = 1 WHERE (Kind = 0 OR Kind = 3 OR Kind = 4 OR Kind
 ## Text Not Rendering Properly
 
 Text may show up as boxes ☐☐☐☐☐☐ if fonts for the characters are not available. Installing fonts for the affected languages can solve the problem. For library cover images, please install system fonts on the server system. For subtitles, the source of fonts depends on the client. Please refer to [Fonts](/docs/general/administration/configuration#fonts) on where to install them.
-
-## Not Showing Active Devices
-
-If your active devices section in the dashboard is not showing progress of the content being played by any devices, this may be because your system clock is out of sync. To resolve this on systemd based Linux systems, you can run the following command to enable syncing with an online NTP server (which in turn will start and enable either the `chronyd` or `ntpd` service). Make sure to restart Jellyfin afterwards.
-
-```bash
-timedatectl set-ntp true
-```

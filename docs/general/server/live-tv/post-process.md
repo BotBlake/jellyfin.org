@@ -1,7 +1,6 @@
 ---
 uid: server-live-tv-post-process
 title: Live TV Post Processing
-sidebar_position: 2
 ---
 
 # Live TV Post Processing
@@ -74,10 +73,10 @@ In the sample script:
 
 ### An example `record_post_process.py` script
 
-This script is too much to post here, so a link to a GitHub repository is provided.
+This script is too much to post here, so a link to a GitHub Gist is provided.
 Comments are listed that describes what each section does.
 
-[GitHub Link to `record_post_process.py`](https://github.com/AndrewBreyen/Jellyfin-TV-Post-Process/)
+[GitHub Gist Link to `record_post_process.py`](https://gist.github.com/AndrewBreyen/1ac109bb485d8523e28fe98b3a222602)
 
 ## Diving Deeper
 

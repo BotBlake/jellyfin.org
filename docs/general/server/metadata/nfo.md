@@ -78,7 +78,7 @@ User data importing is only possible for a single user. This user can be set in 
 | premiered     |                                                                                                                       |
 | releasedate   |                                                                                                                       |
 | enddate       |                                                                                                                       |
-| genre         | multiple tags allowed. These tags will be ignored for music albums and music artists.                                 |
+| genre         | multiple tags allowed                                                                                                 |
 | tag           | multiple tags allowed                                                                                                 |
 | style         | multiple tags allowed                                                                                                 |
 | fileinfo      |                                                                                                                       |

@@ -19,7 +19,7 @@ const config: Config = {
   organizationName: 'jellyfin',
   projectName: 'jellyfin.org',
   themeConfig: {
-    image: 'images/social.png?v2',
+    image: 'images/social.png',
     metadata: [
       { name: 'og:type', content: 'website' },
       { name: 'twitter:card', content: 'summary_large_image' },
@@ -69,7 +69,7 @@ const config: Config = {
       logo: {
         alt: 'Jellyfin Logo',
         src: 'images/logo.svg',
-        width: 280,
+        width: 240,
         height: 80
       },
       links: [
@@ -101,9 +101,6 @@ const config: Config = {
 Site content is licensed <a href='http://creativecommons.org/licenses/by-nd/4.0/'>CC-BY-ND-4.0</a>`
     }
   },
-  markdown: {
-    mermaid: true
-  },
   plugins: [
     // Main content
     [
@@ -119,16 +116,13 @@ Site content is licensed <a href='http://creativecommons.org/licenses/by-nd/4.0/
         id: 'blog-main',
         routeBasePath: 'posts',
         showReadingTime: true,
-        path: 'blog',
-        onInlineAuthors: 'ignore',
-        onUntruncatedBlogPosts: 'ignore'
+        path: 'blog'
       } satisfies Blog.Options
     ],
     ['@docusaurus/plugin-content-pages', {} satisfies Pages.Options],
     // Others
     ['@docusaurus/plugin-sitemap', {} satisfies Sitemap.Options],
     ['docusaurus-plugin-sass', {}],
-    ['@docusaurus/plugin-svgr', {}],
     [
       '@docusaurus/plugin-client-redirects',
       {
@@ -162,8 +156,7 @@ Site content is licensed <a href='http://creativecommons.org/licenses/by-nd/4.0/
         ],
         explicitSearchResultPath: true
       } satisfies SearchLocal.PluginOptions
-    ],
-    ['@docusaurus/theme-mermaid', {}]
+    ]
   ]
 };
 

@@ -1,13 +1,13 @@
 ---
 uid: server-live-tv-index
-title: Live Broadcast
+title: Live TV
 ---
 
-# Live Broadcast
+# Live TV
 
-Jellyfin allows you to watch and record live television using supported hardware, as well as listen to internet radio. The first step is setting up a tuner to send data to Jellyfin, and then configure a source for the program guide data.
+Jellyfin allows you to watch and record live television using supported hardware. The first step is setting up a tuner to send data to Jellyfin, and then configure a source for the program guide data.
 
-See the [Live TV setup guide](/docs/general/server/live-tv/setup-guide) for detailed instructions.
+[Click here](/docs/general/server/live-tv/setup-guide) for the general setup guide.
 
 ## Tuner
 
