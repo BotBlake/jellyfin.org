@@ -1,12 +1,12 @@
 import { globalIgnores } from 'eslint/config';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
-import ts from 'typescript-eslint';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
 import jsxA11Y from 'eslint-plugin-jsx-a11y';
 import globals from 'globals';
 
-export default ts.config([
-  globalIgnores([
+export default [
+  ...globalIgnores([
     'node_modules',
     'build',
     '**/.docusaurus',
@@ -21,11 +21,17 @@ export default ts.config([
     '**/yarn-error.log*',
     '**/*.json'
   ]),
-  react.configs.flat.recommended,
-  reactHooks.configs['recommended-latest'],
-  ...ts.configs.recommended,
-  jsxA11Y.flatConfigs.recommended,
+
   {
+    files: ['*.ts', '*.tsx', '*.js', '*.jsx', '*.json'],
+
+    plugins: {
+      react,
+      'react-hooks': reactHooks,
+      '@typescript-eslint': tsPlugin,
+      'jsx-a11y': jsxA11Y
+    },
+
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -54,4 +60,4 @@ export default ts.config([
       '@typescript-eslint/no-unused-vars': 'error'
     }
   }
-]);
+];
