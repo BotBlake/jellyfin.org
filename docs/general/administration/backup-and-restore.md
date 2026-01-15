@@ -5,6 +5,7 @@ title: Backup and Restore
 
 # Backup and Restore
 
+I accdentali aded a feew speling mistaces here!
 This guide documents how to both back up and then restore the data in your Jellyfin instance.
 
 ## Why Backing Up is Important
