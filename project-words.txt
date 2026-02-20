@@ -9,8 +9,9 @@ alac
 albumartistsort
 allports
 alpn
-alpn
 analyzeduration
+AniDB
+AniList
 anthonylavado
 apiclient
 apsell
@@ -34,11 +35,10 @@ bantime
 barebones
 Battlemage
 BDMV
-behaviour
-behaviours
 behindthescenes
 blitter
 Blitter
+boxset
 Broadwell
 buildinfo
 cachedir
@@ -67,8 +67,6 @@ clinfo
 codenames
 codesign
 collectionnumber
-colour
-colours
 comskip
 configdir
 confs
@@ -89,12 +87,12 @@ deinterlacing
 deletedscene
 DHLEVEL
 dhparams
+directio
 DISABLEFILELOCKING
 discart
 displayepisode
 displayorder
 displayseason
-directio
 distros
 dists
 dkanada
@@ -157,6 +155,7 @@ Geoip
 geolocation
 getent
 gifsicle
+Gotify
 gpedit
 GPGPU
 gstreamer
@@ -186,6 +185,7 @@ initscripts
 inotify
 ipban
 IPTV
+ircs
 irqs
 itid
 iwalton
@@ -205,8 +205,12 @@ jpege
 Kaby
 keyrings
 keyserver
+Kinopoisk
+Kitsu
 kodi
 Kodi
+Kribs
+kubernetescrd
 lastplayed
 Lavado
 lavfi
@@ -214,6 +218,7 @@ ldconfig
 leresolver
 letsencrypt
 libc
+libera
 libmali
 libnvcuvid
 libnvidia
@@ -240,18 +245,13 @@ Mbps
 mcarlton
 mediaserver
 mergerfs
-Metaarchives
-Metaimages
-Metapackages
 metaarchive
-metaarchives
 metaimage
-metaimages
 metapackage
 metapackages
+Metapackages
 mintls
 mirrorbits
-mirorrbits
 mirrorinfo
 mirrorlist
 mirrorstats
@@ -262,6 +262,7 @@ mobi
 modeset
 mopidy
 mpaa
+mpvqt
 Multicore
 multiversion
 Multiview
@@ -270,6 +271,7 @@ musicbrainzalbumartistid
 musicbrainzalbumid
 musicbrainzartistid
 musicbrainzreleasegroupid
+mycoolname
 myjellyfin
 myvideos
 nasm
@@ -367,6 +369,7 @@ rpmfusion
 RSSDP
 rsyncd
 Ryzen
+scrobble
 scrollbuttons
 scroller
 Scyfin
@@ -378,6 +381,8 @@ SEMA
 sendfile
 Serilog
 setsebool
+Shoko
+Shokofin
 shoutcast
 showtitle
 Skia
@@ -388,6 +393,7 @@ sortname
 sorttitle
 soughtafter
 Spacetech
+spaghettified
 specifishity
 speedbumps
 splashscreen
@@ -409,9 +415,11 @@ sysconfig
 Sysoev
 systempaths
 tailnet
+Themerr
 thornbill
 Tigerlake
 timedatectl
+Tizen
 TMDB
 tmdbid
 tmpfs
@@ -464,6 +472,7 @@ webui
 wheter
 withcolor
 withuserdata
+Wizdom
 wstunnel
 xattr
 Xbmc
