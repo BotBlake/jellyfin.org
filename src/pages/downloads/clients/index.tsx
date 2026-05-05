@@ -200,7 +200,8 @@ export default function ClientsPage({ recommended = true }: { recommended?: bool
               </div>
             </div>
           )}
-
+        </section>
+        <section className={styles.fullWidthSection}>
           {filteredClients.length === 0 ? (
             <div className='card padding-vert--lg'>
               <div className='card__header text--center'>
@@ -208,7 +209,13 @@ export default function ClientsPage({ recommended = true }: { recommended?: bool
               </div>
             </div>
           ) : (
-            filteredClients.map((client) => <ClientDetails key={client.id} client={client} />)
+            <div className={styles.grid}>
+              {filteredClients.map((client) => (
+                <div key={client.id} className={styles.gridItem}>
+                  <ClientDetails client={client} />
+                </div>
+              ))}
+            </div>
           )}
         </section>
       </main>
