@@ -31,7 +31,6 @@ jobs:
 
       - name: Update plugin data
         run: |
-          npm ci --no-audit
           npm run update-plugins
 
       - name: Create or update pull request
